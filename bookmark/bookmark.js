@@ -12,7 +12,14 @@ updateURL = function() {
 updateBox = function(tabs) {
     /* Given the tabs, get the URL, and (1) save it to disk,
         (2) fetch it, then (3) write list to the little Chrome window. */
+
+    // The current tab's url
     var siteURL = tabs[0].url;
+
+    // Test fetch, save on this single URL
+    // saveUrl(siteURL);
+
+
     printUrl(siteURL);
 }
 
