@@ -16,24 +16,34 @@ function Queue() {
 			this.end = this.end.next;
 		};
 		this.end.data = data;
-		this.length = this.length + 1;
+		this.length++;
 	};
 
 	this.dequeue = function() {
 		if (this.length === 0)
 			return null;
 
-		data = this.start.data;
+		var data = this.start.data;
 		this.start = this.start.next;
 		this.length = this.length - 1;
 		return data;
 	}
 
-	this.length = function() {
+	this.size = function() {
 		return this.length;
 	}
 
 	this.isEmpty = function() {
 		return this.length === 0;
+	}
+
+	this.getArray = function() {
+		var arr = [];
+		var index = this.start;
+		while(index){
+			arr[arr.length] = index.data;
+			index = index.next;
+		}
+		return arr;
 	}
 }
