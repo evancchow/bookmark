@@ -4,6 +4,8 @@ updateURL = function() {
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, 
         function(tabs) {
             updateBox(tabs);
+
+            // put saveURL, in (?) fetchURL here so get synchronous performance
         });
 }   
 

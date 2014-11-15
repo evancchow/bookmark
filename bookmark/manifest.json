@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Hello World",
-    "description": "My first Chrome Extension",
+    "name": "Now and Later",
+    "description": "Save articles for later, and read them when you are busy.",
     "version": "1.0",
     "permissions" : [
         "storage",
