@@ -10,23 +10,25 @@ updateURL = function() {
 }   
 
 updateBox = function(tabs) {
+    /* Given the tabs, get the URL, and (1) save it to disk,
+        (2) fetch it, then (3) write list to the little Chrome window. */
+
+    // The current tab's url
     var siteURL = tabs[0].url;
-    saveURL(siteURL);
+
+    // Test fetch, save on this single URL
+    // saveUrl(siteURL);
 
 
-
-        // var siteURL = tabs[0].url;        
-        // var url_txtbox = document.createElement('div');
-        // var url_txt = "";
-        // url_txt += encodeURI(siteURL);
-        // url_txtbox.innerHTML = url_txt;
-        // document.body.appendChild(url_txtbox);
+    printUrl(siteURL);
 }
 
-printUrl = function(url) {
-    /* Given a url, create a new DOM element and display it. */
-    /* Ideally: open url in a new tab.
-
+printUrl = function(siteURL) {
+    var url_txtbox = document.createElement('div');
+    var url_txt = "";
+    url_txt += encodeURI(siteURL);
+    url_txtbox.innerHTML = url_txt;
+    document.body.appendChild(url_txtbox);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -34,9 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* Here, feel free to load variables and things
         from outside scripts (just put in HTML first). */
-    // var greeting = document.createElement('div');
-    // greeting.innerHTML = test_num; // load variable from outside script
-    // document.body.appendChild(greeting);
+    var greeting = document.createElement('div');
+    greeting.innerHTML = test_num; // load variable from outside script
+    document.body.appendChild(greeting);
 
 });
 
