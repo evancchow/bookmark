@@ -13,7 +13,7 @@ function fetchUrl(callback) {
 		if (queue) {
 			url = queue.dequeue();
 			if(url) {
-				callback();
+				callback(url); // Evan: changed from callback()
 				/*Not sure if this is necessary*/
 				chrome.storage.sync.set("URLqueue",queue); 
 			}
