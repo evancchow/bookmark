@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
     run_script.updateURL();
 
     var greeting = document.createElement('div');
-    greeting.innerHTML = "hi durr";
+    greeting.innerHTML = test_num; // load variable from outside script
     document.body.appendChild(greeting);
+
+
 
     // Test pulling in a variable from another JS file
     // $.getScript("test.js", function() {
