@@ -5,15 +5,16 @@
 var run_script = {
 
     updateURL: function() {
-        var url = chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, 
+        chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, 
             function (tabs) {
-                var url = tabs[0].url;
-                return url;
+                var siteURL = tabs[0].url;        
+                var txt = document.createElement('div');
+                var final_txt = "";
+                final_txt += encodeURI(siteURL);
+                txt.innerHTML = final_txt;
+                document.body.appendChild(txt);
             });
 
-        var txt = document.createElement('div');
-        txt.innerHTML = "HI DURRR";
-        document.body.appendChild(txt);
     }   
 }
 
