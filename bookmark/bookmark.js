@@ -10,12 +10,17 @@ updateURL = function() {
 }   
 
 updateBox = function(tabs) {
-        var siteURL = tabs[0].url;        
-        var url_txtbox = document.createElement('div');
-        var url_txt = "";
-        url_txt += encodeURI(siteURL);
-        url_txtbox.innerHTML = url_txt;
-        document.body.appendChild(url_txtbox);
+    var siteURL = tabs[0].url;
+    saveURL(siteURL);
+    // do magic
+
+
+        // var siteURL = tabs[0].url;        
+        // var url_txtbox = document.createElement('div');
+        // var url_txt = "";
+        // url_txt += encodeURI(siteURL);
+        // url_txtbox.innerHTML = url_txt;
+        // document.body.appendChild(url_txtbox);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
