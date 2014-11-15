@@ -12,7 +12,7 @@ updateURL = function() {
 updateBox = function(tabs) {
     var siteURL = tabs[0].url;
     saveURL(siteURL);
-    // do magic
+
 
 
         // var siteURL = tabs[0].url;        
@@ -23,14 +23,20 @@ updateBox = function(tabs) {
         // document.body.appendChild(url_txtbox);
 }
 
+printUrl = function(url) {
+    /* Given a url, create a new DOM element and display it. */
+    /* Ideally: open url in a new tab.
+
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     updateURL();
 
     /* Here, feel free to load variables and things
         from outside scripts (just put in HTML first). */
-    var greeting = document.createElement('div');
-    greeting.innerHTML = test_num; // load variable from outside script
-    document.body.appendChild(greeting);
+    // var greeting = document.createElement('div');
+    // greeting.innerHTML = test_num; // load variable from outside script
+    // document.body.appendChild(greeting);
 
 });
 
