@@ -1,14 +1,23 @@
 function saveUrl(url) {
     chrome.storage.sync.get({myqueue : []}, function(data){
-        // var myqueue = newQueue();
-
-        // console.log(data);
-        var queue = new Queue();
-        // if(data) {
-            // console.log("the queue exists");
-        // var myqueue = data.myqueue;          
-        // }
-        queue.enqueue(url);
+        var queue;
+        if(data) {
+            console.log("the queue exists");
+            queue = data.myqueue;          
+        } else {
+            console.log("queue does not exist");
+            queue = new Queue();
+        }
+        console.log("queue from data.myqueue");
+        console.log(queue);
+        console.log("a new queue");
+        var diffqueue = new Queue();
+        console.log(diffqueue);
+        console.log("trying to cast to queue");
+        var castqueue = Object.create(Queue, queue);
+        console.log(castqueue);
+        console.log("about to enqueue");
+        queue.enqueue(url); // not working
         // console.log(myqueue.getArray().toString());
         chrome.storage.sync.set({myqueue : queue});
         console.log("After");
