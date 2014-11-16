@@ -6,10 +6,12 @@ function nowCLick() {
 	});
 }
 
-function laterCLick() {
+function laterClick() {
 	chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, 
         function(tabs) {
-        	if(tabs.length > 0)
-	        	saveUrl(tabs[0].url);
+        	saveUrl(tabs[0].url);
+            chrome.tabs.query({ 'active': true }, function(tabs) {
+                chrome.tabs.remove(tabs[0].id);
+            });
         });
 }
