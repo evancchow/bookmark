@@ -1,4 +1,5 @@
 function nowCLick() {
+    /* Pulls a page off the internal array and displays it for you. */
 
 	fetchUrl(function(newUrl){
 		if(newUrl)
