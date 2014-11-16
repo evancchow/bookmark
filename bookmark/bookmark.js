@@ -1,20 +1,26 @@
 updateBox = function() {
-    var num_urls = 0;
 
-    document.getElementById("Later").onclick = function() {
-        laterClick();
-        num_urls = num_urls - 1;
-    }
-    document.getElementById("Now").onclick = function() {
-        nowClick(siteURL); 
-        num_urls = num_urls + 1;
-    }
-    document.getElementById("ArraySize").onclick = function() {
-        arraySize(printItem);
-    }
-    document.getElementById("PrintItems").onclick = function() {
-        printItems(printItem);
-    }
+    countUrls(function(count){
+        num_urls = count;
+
+        //add code to edit number 
+
+
+        document.getElementById("Later").onclick = function() {
+            laterClick();
+            //update picture
+            num_urls = num_urls + 1;
+        }
+        document.getElementById("Now").onclick = function() {
+            nowClick();
+            if(num_urls > 0)
+                num_urls = num_urls - 1;
+        }
+        document.getElementById("Clear").onclick = function() {
+            clearUrls();
+            num_urls = 0;
+        }
+    });
 
 }
 
