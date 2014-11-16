@@ -1,39 +1,19 @@
 function saveUrl(url) {
-    chrome.storage.sync.get({myqueue : []}, function(data){
-        var queue;
-        if(data) {
-            console.log("the queue exists");
-            queue = data.myqueue;          
-        } else {
-            console.log("queue does not exist");
-            queue = new Queue();
-        }
-        console.log("queue from data.myqueue");
-        console.log(queue);
-        console.log("a new queue");
-        var diffqueue = new Queue();
-        console.log(diffqueue);
-        console.log("trying to cast to queue");
-        var castqueue = Object.create(Queue, queue);
-        console.log(castqueue);
+    chrome.storage.local.get(null, function(data){
+        var queue = data.myqueue;
         console.log("about to enqueue");
-        queue.enqueue(url); // not working
-        // console.log(myqueue.getArray().toString());
-        chrome.storage.sync.set({myqueue : queue});
-        console.log("After");
-        chrome.storage.sync.get({myqueue : []}, function(data) {
-            console.log(data);
-        });
+        console.log(queue);
+        if (!queue) {
+            console.log("queue not exists!");
+            queue = [];
+        }
+        queue.push(url);
+        chrome.storage.local.set({myqueue : queue});
     });
 }
 
-// function updateStorage(queue) {
-//     chrome.storage.sync.set({"myqueue" : queue});
-// } 
-
 function clearUrls() {
-    var myqueue = new Queue();
-    chrome.storage.sync.set({"myqueue" : myqueue});
+    chrome.storage.local.set({"myqueue" : []});
 }
 
 function fetchUrl(callback) {
