@@ -1,27 +1,12 @@
-updateURL = function() {
-    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, 
-        function(tabs) {
-            updateBox(tabs);
-
-            // put saveURL, in (?) fetchURL here so get synchronous performance
-        });
-}   
-
-updateBox = function(tabs) {
-    /* Given the tabs, get the URL, and (1) save it to disk,
-        (2) fetch it, then (3) write list to the little Chrome window. */
-
-    // The current tab's url
-    var siteURL = tabs[0].url; // chrome://extensions
-
-    /* Check if NOW button is clicked */
+updateBox = function() {
     var num_urls = 0;
+
     document.getElementById("Later").onclick = function() {
-        nowClick();
+        laterClick();
         num_urls = num_urls - 1;
     }
     document.getElementById("Now").onclick = function() {
-        saveUrl(siteURL); 
+        nowClick(siteURL); 
         num_urls = num_urls + 1;
     }
     document.getElementById("ArraySize").onclick = function() {
@@ -54,7 +39,7 @@ printUrl = function(siteURL) {
 document.addEventListener('DOMContentLoaded', function() {
     /* Print number of items you currently have. */
 
-    updateURL();
+    updateBox();
 
     /* Here, feel free to load variables and things
         from outside scripts (just put in HTML first). */
