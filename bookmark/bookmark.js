@@ -12,18 +12,31 @@ updateBox = function(tabs) {
         (2) fetch it, then (3) write list to the little Chrome window. */
 
     // The current tab's url
-    var siteURL = tabs[0].url;
+    var siteURL = tabs[0].url; // chrome://extensions
 
-    // Test fetch, save on this single URL
+    /* Check if NOW button is clicked */
+    var num_urls = 0;
+    document.getElementById("Now").onclick = function() {
+        saveUrl(siteURL); 
+        num_urls = num_urls + 1;
+    }
+    document.getElementById("ArraySize").onclick = function() {
+        arraySize(printItem);
+    }
+    document.getElementById("PrintItems").onclick = function() {
+        printItems(printItem);
+    }
 
-    saveUrl(siteURL);
-    saveUrl("matt wang");
-    saveUrl("hi there");
+}
 
-    console.log("Array size:");
-    console.log(arraySize());
-
-    // fetchUrl(printUrl);
+printItem = function(item, text) {
+    var itembox = document.createElement('div');
+    if (!text) {
+        itembox.innerHTML = item;
+    } else {
+        itembox.innerHTML = text + " " + item
+    }
+    document.body.appendChild(itembox);
 }
 
 printUrl = function(siteURL) {
@@ -35,6 +48,8 @@ printUrl = function(siteURL) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    /* Print number of items you currently have. */
+
     updateURL();
 
     /* Here, feel free to load variables and things
@@ -42,6 +57,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // var greeting = document.createElement('div');
     // greeting.innerHTML = test_num; // load variable from outside script
     // document.body.appendChild(greeting);
-
 });
 
