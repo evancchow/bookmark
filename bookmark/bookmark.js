@@ -16,7 +16,7 @@ updateBox = function() {
             if(num_urls > 0)
                 num_urls = num_urls - 1;
         }
-        document.getElementById("Clear").onclick = function() {
+        document.getElementById("titleBox").onclick = function() {
             clearUrls();
             num_urls = 0;
         }
