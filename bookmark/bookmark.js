@@ -12,19 +12,18 @@ updateBox = function(tabs) {
         (2) fetch it, then (3) write list to the little Chrome window. */
 
     // The current tab's url
-    // var siteURL = tabs[0].url;
+    var siteURL = tabs[0].url;
 
     // Test fetch, save on this single URL
-    saveUrl("yahoo.com");
+    saveUrl(siteURL);
 
-    fetchUrl(console.log);      
-    // printUrl(fetchURL());
+    fetchUrl(printUrl);
 }
 
 printUrl = function(siteURL) {
     var url_txtbox = document.createElement('div');
     var url_txt = "";
-    url_txt += encodeURI(siteURL);
+    url_txt += siteURL.toString();
     url_txtbox.innerHTML = url_txt;
     document.body.appendChild(url_txtbox);
 }
