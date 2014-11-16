@@ -1,5 +1,3 @@
-
-
 updateURL = function() {
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, 
         function(tabs) {
@@ -14,13 +12,13 @@ updateBox = function(tabs) {
         (2) fetch it, then (3) write list to the little Chrome window. */
 
     // The current tab's url
-    var siteURL = tabs[0].url;
+    // var siteURL = tabs[0].url;
 
     // Test fetch, save on this single URL
-    // saveUrl(siteURL);
+    saveUrl("yahoo.com");
 
-
-    printUrl(siteURL);
+    fetchUrl(console.log);      
+    // printUrl(fetchURL());
 }
 
 printUrl = function(siteURL) {
@@ -36,9 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* Here, feel free to load variables and things
         from outside scripts (just put in HTML first). */
-    var greeting = document.createElement('div');
-    greeting.innerHTML = test_num; // load variable from outside script
-    document.body.appendChild(greeting);
+    // var greeting = document.createElement('div');
+    // greeting.innerHTML = test_num; // load variable from outside script
+    // document.body.appendChild(greeting);
 
 });
 

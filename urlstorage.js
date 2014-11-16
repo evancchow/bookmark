@@ -1,33 +1,11 @@
 function saveUrl(url) {
-	chrome.storage.sync.get("URLqueue", function(queue){
-		if (!queue)
-			queue = Queue();
-		queue.enqueue(url);
-		/*Not sure if this is necessary*/
-		chrome.storage.sync.set("URLqueue",queue); 
-	});	
+	chrome.storage.syncset("myurl", url, function() {
+		alert("successfully stored url");
+	});
 }
 
 function fetchUrl(callback) {
-	chrome.storage.sync.get("URLqueue", function(queue){
-		if (queue) {
-			url = queue.dequeue();
-			if(url) {
-				callback();
-				/*Not sure if this is necessary*/
-				chrome.storage.sync.set("URLqueue",queue); 
-			}
-		}
-	});	
-}
-
-function fetchUrlListLength(callback) {
-	chrome.storage.sync.get("URLqueue", function(queue){
-		if (queue) {
-			callback(queue.length);
-		} else
-		{
-			callback(0);
-		};
-	});	
+	chrome.storage.sync.get("myurl", function(url) {
+		callback(url);
+	});
 }
