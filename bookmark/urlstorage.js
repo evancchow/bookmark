@@ -17,21 +17,28 @@ function clearUrls() {
 }
 
 function fetchUrl(callback) {
-    chrome.storage.sync.get("myqueue", function(data){
-        if (!data) {
-            alert("No data/no queue!");
-        } else {
-            /* If there is a queue, get first item (deque) and then
-                return the callback. */
-            var myqueue = data.myqueue;
-            var item = myqueue.deque();
-            chrome.storage.sync.set({"myqueue" : myqueue});
-            if (callback) {
-                callback(item);
-            } else {
-                console.log(item);
-            }
+    chrome.storage.local.get(null, function(data){
+        var queue = data.myqueue;
+        var url = null;
+        console.log("about to dequeue");
+        console.log(queue);
+        if (queue) {
+            url = queue.shift();
+            chrome.storage.local.set({myqueue : queue});    
         }
+        if (callback) {
+            callback(url);
+        } else {
+            console.log(url);
+        }
+        
+    });
+}
+
+function arraySize() {
+    chrome.storage.local.get(null, function(data) {
+        var array = data.myqueue;
+        return array.length;
     });
 }
 
