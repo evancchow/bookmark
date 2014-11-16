@@ -1,9 +1,10 @@
-function nowCLick() {
+function nowClick() {
     /* Pulls a page off the internal array and displays it for you. */
 
 	fetchUrl(function(newUrl){
-		if(newUrl)
+		if(newUrl){
 			chrome.tabs.create({url : newUrl});
+        }
 	});
 }
 
