@@ -23,11 +23,11 @@ function printItems(callback) {
     })
 }
 
-function closeCurrTab() {
-    chrome.tabs.query({ active: true }, function(tabs) {
-             chrome.tabs.remove(tabs[0].id);
-    });
-}
+// function closeCurrTab() {
+//     chrome.tabs.query({ active: true }, function(tabs) {
+//              chrome.tabs.remove(tabs[0].id);
+//     });
+// }
 function clearUrls() {
     chrome.storage.local.set({"myqueue" : []});
 }
@@ -41,7 +41,7 @@ function fetchUrl(callback) {
         if (queue) {
             url = queue.shift();
             chrome.storage.local.set({myqueue : queue});    
-        }
+        };
         if (callback) {
             callback(url);
         } else {
@@ -50,10 +50,10 @@ function fetchUrl(callback) {
     });
 }
 
-function arraySize(callback) {
+function countUrls(callback) {
     chrome.storage.local.get(null, function(data) {
-        var array = data.myqueue;
-        callback(array.length);
+        var queue = data.myqueue;
+        callback(queue.length);
     });
 }
 
