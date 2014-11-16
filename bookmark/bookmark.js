@@ -15,9 +15,12 @@ updateBox = function(tabs) {
     var siteURL = tabs[0].url;
 
     // Test fetch, save on this single URL
+    clearUrls();
     saveUrl(siteURL);
+    saveUrl("matt wang");
+    saveUrl("hi there");
 
-    fetchUrl(printUrl);
+    // fetchUrl(printUrl);
 }
 
 printUrl = function(siteURL) {
