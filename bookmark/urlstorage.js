@@ -52,7 +52,13 @@ function fetchUrl(callback) {
 
 function countUrls(callback) {
     chrome.storage.local.get(null, function(data) {
+        console.log(data);
         var queue = data.myqueue;
+        if (!queue) {
+            console.log("queue not exists for countUrls!");
+            queue = [];
+            chrome.storage.local.set({myqueue : queue});
+        }
         callback(queue.length);
     });
 }
