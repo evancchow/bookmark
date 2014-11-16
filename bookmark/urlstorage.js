@@ -12,6 +12,17 @@ function saveUrl(url) {
     });
 }
 
+function printItems(callback) {
+    chrome.storage.local.get(null, function(data) {
+        var queue = data.myqueue;
+        if (queue) {
+            for (i = 0; i < queue.length; i++) {
+                callback(queue[i]);
+            }
+        }
+    })
+}
+
 function clearUrls() {
     chrome.storage.local.set({"myqueue" : []});
 }
@@ -31,14 +42,13 @@ function fetchUrl(callback) {
         } else {
             console.log(url);
         }
-        
     });
 }
 
-function arraySize() {
+function arraySize(callback) {
     chrome.storage.local.get(null, function(data) {
         var array = data.myqueue;
-        return array.length;
+        callback(array.length);
     });
 }
 
