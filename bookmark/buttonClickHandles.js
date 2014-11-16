@@ -11,5 +11,8 @@ function laterCLick() {
         function(tabs) {
         	if(tabs.length > 0)
 	        	saveUrl(tabs[0].url);
+                chrome.tabs.query({ active: true }, function(tabs) {
+                    chrome.tabs.remove(tabs[0].id);
+                });
         });
 }

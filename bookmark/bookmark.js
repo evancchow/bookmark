@@ -16,6 +16,10 @@ updateBox = function(tabs) {
 
     /* Check if NOW button is clicked */
     var num_urls = 0;
+    document.getElementById("Later").onclick = function() {
+        nowClick();
+        num_urls = num_urls - 1;
+    }
     document.getElementById("Now").onclick = function() {
         saveUrl(siteURL); 
         num_urls = num_urls + 1;
