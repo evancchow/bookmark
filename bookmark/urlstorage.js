@@ -4,7 +4,7 @@ function saveUrl(url) {
     chrome.storage.local.get(null, function(data){
         /* Do not save a url if it's already stored. */
         var queue = data.myqueue;
-        if (queue.indexOf(url) != -1) {
+        if (queue.indexOf(url) != -1) { // if array already contains url
             return;
         } else {
             if (!queue) {
@@ -56,7 +56,6 @@ function countUrls(callback) {
         console.log(data);
         var queue = data.myqueue;
         if (!queue) {
-            console.log("queue not exists for countUrls!");
             queue = [];
             chrome.storage.local.set({myqueue : queue});
         }

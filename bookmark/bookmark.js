@@ -7,6 +7,8 @@ updateBox = function() {
 
         document.getElementById("Later").onclick = function() {
             laterClick();
+            // TODO here: update so only increments num_urls iff
+            // you added a url, and it WASN'T already stored
             num_urls = num_urls + 1;
             updateTitleCount(num_urls);
         }
