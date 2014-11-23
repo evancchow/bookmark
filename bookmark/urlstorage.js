@@ -1,14 +1,18 @@
+/* Remember, "queue" is not actually a queue. It's just an array. */
+
 function saveUrl(url) {
     chrome.storage.local.get(null, function(data){
+        /* Do not save a url if it's already stored. */
         var queue = data.myqueue;
-        console.log("about to enqueue");
-        console.log(queue);
-        if (!queue) {
-            console.log("queue not exists!");
-            queue = [];
+        if (queue.indexOf(url) != -1) {
+            return;
+        } else {
+            if (!queue) {
+                queue = [];
+            }
+            queue.push(url);
+            chrome.storage.local.set({myqueue : queue});            
         }
-        queue.push(url);
-        chrome.storage.local.set({myqueue : queue});
     });
 }
 
@@ -23,11 +27,6 @@ function printItems(callback) {
     })
 }
 
-// function closeCurrTab() {
-//     chrome.tabs.query({ active: true }, function(tabs) {
-//              chrome.tabs.remove(tabs[0].id);
-//     });
-// }
 function clearUrls() {
     chrome.storage.local.set({"myqueue" : []});
 }
@@ -36,10 +35,12 @@ function fetchUrl(callback) {
     chrome.storage.local.get(null, function(data){
         var queue = data.myqueue;
         var url = null;
-        console.log("about to dequeue");
-        console.log(queue);
         if (queue) {
-            url = queue.shift();
+            /* Instead of returning the oldest, get random page from array, 
+                remove it from array, and update the local Chrome storage. */
+            url_ix = Math.floor(Math.random()*queue.length);
+            url = queue[url_ix];
+            queue.splice(url_ix, 1); // remove
             chrome.storage.local.set({myqueue : queue});    
         };
         if (callback) {

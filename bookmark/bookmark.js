@@ -3,34 +3,26 @@ updateBox = function() {
 
     countUrls(function(count){
         num_urls = count;
-
-        // call foo() to update number
         updateTitleCount(num_urls);
 
         document.getElementById("Later").onclick = function() {
             laterClick();
-            //update picture
             num_urls = num_urls + 1;
-
-            // call foo() to update number
             updateTitleCount(num_urls);
-
         }
         document.getElementById("Now").onclick = function() {
             nowClick();
             if(num_urls > 0)
                 num_urls = num_urls - 1;
-
-            // call foo() to update number
             updateTitleCount(num_urls);
 
         }
         document.getElementById("titleBox").onclick = function() {
-            clearUrls();
-            num_urls = 0;
-            // call foo() to update number
-            updateTitleCount(num_urls);
-
+            if (confirm("Delete all stored pages?")) {
+                clearUrls();
+                num_urls = 0;
+                updateTitleCount(num_urls);
+            }
         }
     });
 
